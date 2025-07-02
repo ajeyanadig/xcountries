@@ -7,17 +7,12 @@ function App() {
     fetch("https://xcountries-backend.azurewebsites.net/all")
       .then((rawData) => rawData.json())
       .then((data) => setCountries(data))
-      .catch((e) => console.log("Error fetching data: " + e));
+      .catch((e) => console.error("Error fetching data: ", e));
   }, []);
   return (
     <div className="App" style={{ display: "flex", flexWrap: "wrap" }}>
-      {countries.map((curr) => (
-        <Card
-          url={curr.flag}
-          name={curr.name}
-          abbr={curr.abbr}
-          key={curr.abbr}
-        />
+      {countries.map((curr, i) => (
+        <Card url={curr.flag} name={curr.name} abbr={curr.abbr} key={i} />
       ))}
     </div>
   );
