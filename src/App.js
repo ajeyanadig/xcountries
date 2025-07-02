@@ -7,7 +7,7 @@ function App() {
     fetch("https://xcountries-backend.azurewebsites.net/all")
       .then((rawData) => rawData.json())
       .then((data) => setCountries(data))
-      .catch((e) => console.log(e));
+      .catch((e) => console.log("Error fetching data: " + e));
   }, []);
   return (
     <div className="App" style={{ display: "flex", flexWrap: "wrap" }}>
